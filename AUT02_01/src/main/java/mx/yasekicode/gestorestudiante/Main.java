@@ -48,7 +48,7 @@ public class Main {
 
                 case 4:
                     System.out.println("\n--- NOTA MEDIA GENERAL ---");
-
+                    mostrarNotaMediaGral();
                     break;
 
                 case 5:
@@ -151,6 +151,18 @@ public class Main {
 
         }else {
             System.out.println("USER NOT FUND: " + nombre);
+        }
+    }
+
+
+// ----------- Nota media General de todos los estudiantes --------
+    private static void mostrarNotaMediaGral() {
+        Double promedio = AdminEstudiante.obtenerNotaMGral(); //return promedio de la clase AdEstud relacionado con metodo..
+
+        if (promedio == null) {
+            System.out.println("USERS NOT FUND:\n");
+        } else {
+            System.out.println("> " + promedio + " <");
         }
     }
 

@@ -40,6 +40,25 @@ public class AdminEstudiante {
         return null;
     }
 
+// --------   OBTENER LA NOTAMEDIA GENERAL
+    public static Double obtenerNotaMGral() {
+        if (listadoEstudiantes.isEmpty()) {
+            return null;
+        }
+
+        double total = 0.0;
+        int numEstudiantes = 0;
+        for (Estudiante estudiante : listadoEstudiantes)
+        {
+            total += estudiante.getNotaMedia();
+
+        }
+
+        numEstudiantes = listadoEstudiantes.size();
+        double promedio = total / numEstudiantes;
+        return promedio;
+    }
+
 
 }
 
