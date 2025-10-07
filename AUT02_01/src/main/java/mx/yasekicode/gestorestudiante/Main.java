@@ -20,6 +20,7 @@ public class Main {
             System.out.println("3. Buscar estudiante por nombre");
             System.out.println("4. Calcular media de notas");
             System.out.println("5. Estudiante con mejor calificación");
+// ------------         SALIR DEL PROGRAMA
             System.out.println("6. Salir");
             System.out.println("================================");
             System.out.print("Selecciona una opción: ");
@@ -54,7 +55,7 @@ public class Main {
                 case 5:
                     notaMasAlta();
                     break;
-
+// ------------         SALIR DEL PROGRAMA
                 case 6:
                     System.out.println("¡Programa finalizado!");
                     break;
