@@ -43,7 +43,7 @@ public class Main {
                     break;
 
                 case 3:
-
+                    buscarNombre(entrada);
                     break;
 
                 case 4:
@@ -128,7 +128,30 @@ public class Main {
         } else {
             System.out.println("Estudiante NO AGREGADO - Verifica los datos");
         }
+    }
 
+
+// -------      BUSCA DE ESTUDIANTE POR NOMBRE.. -------------
+
+    private static void buscarNombre(Scanner entrada) {
+        System.out.println("\n--- BUSCAR ESTUDIANTE POR NOMBRE ---");
+        entrada.nextLine();
+
+        System.out.println("Ingrese el nombre: ");
+        String nombre = entrada.nextLine(); //captura
+
+        Estudiante estudianteEncontrado = AdminEstudiante.buscarNombreEstudiante(nombre);
+        //si existe
+        if (estudianteEncontrado !=null) {
+            System.out.println("Datos del estudiante:");
+            System.out.println("Nombre: " + estudianteEncontrado.getNombre());
+            System.out.println("Edad: " + estudianteEncontrado.getEdad());
+            System.out.println("Nota media: " + estudianteEncontrado.getNotaMedia());
+            System.out.println("Matriculado: " + estudianteEncontrado.getMatricula());
+
+        }else {
+            System.out.println("USER NOT FUND: " + nombre);
+        }
     }
 
 }

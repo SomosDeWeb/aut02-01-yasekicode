@@ -24,6 +24,23 @@ public class AdminEstudiante {
         return lista.toString(); //imprimir metodo mostrarEstudiantes.
     }
 
+// -------      BUSCA DE ESTUDIANTE POR NOMBRE.. -------------
+    public static Estudiante buscarNombreEstudiante(String busqueda) {
+        if (listadoEstudiantes.isEmpty()) {
+            return null;
+        }
+    //busca nombre en la lista con get
+    //p cd Estudiante alias estudiante EN(:)/dentro de listadoEs...
+        for (Estudiante estudiante : listadoEstudiantes) {
+            //uso de get - equalsIgnoreCase: mtodo para comparar Strings ignorando MAYUS y minúsculas.
+            if (estudiante.getNombre().equalsIgnoreCase(busqueda.trim())) {
+                return estudiante; //si encuentra retorna el objeto
+            }
+        }
+        return null;
+    }
+
+
 }
 
 
