@@ -52,7 +52,7 @@ public class Main {
                     break;
 
                 case 5:
-
+                    notaMasAlta();
                     break;
 
                 case 6:
@@ -163,6 +163,24 @@ public class Main {
             System.out.println("USERS NOT FUND:\n");
         } else {
             System.out.println("> " + promedio + " <");
+        }
+    }
+
+
+// ------- Estudiante cn la nota mas alta ----------
+    private static void notaMasAlta() {
+        //Double mejorNota = AdminEstudiante.obtenerMejorNota();
+        Estudiante estudiante = AdminEstudiante.obtenerMejorNota(); //retorn al alumno con la nota+
+
+        System.out.println("\n--- ESTUDIANTE CON LA NOTA + ALTA ---");
+        if (estudiante == null) {
+            System.out.println("USERS NOT FUND:\n");
+
+        } else {
+            System.out.println("Nombre: " + estudiante.getNombre());
+            System.out.println("Edad: " + estudiante.getEdad());
+            System.out.println("Nota: " + estudiante.getNotaMedia());
+            System.out.println("Matricula: " + estudiante.getMatricula());
         }
     }
 

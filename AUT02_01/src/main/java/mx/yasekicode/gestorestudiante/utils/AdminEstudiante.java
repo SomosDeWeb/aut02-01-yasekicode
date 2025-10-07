@@ -60,6 +60,25 @@ public class AdminEstudiante {
     }
 
 
+// ----------- OBTENER LA MEJOR NOTA ----------
+    public static Estudiante obtenerMejorNota() {
+        if (listadoEstudiantes.size() == 0) { //lo mismo que empty
+            return null;
+        }
+
+        double mejorNota = 0.0;
+        Estudiante mejorEstudiante = null;
+
+        for (Estudiante estudiante : listadoEstudiantes) {
+            if (mejorEstudiante == null || estudiante.getNotaMedia() > mejorNota) {
+                mejorEstudiante = estudiante;
+                mejorNota = estudiante.getNotaMedia();
+            }
+        }
+        return mejorEstudiante;
+    }
+
+
 }
 
 
