@@ -1,7 +1,10 @@
 package mx.yasekicode.gestorestudiante;
 import mx.yasekicode.gestorestudiante.models.Estudiante;
 import mx.yasekicode.gestorestudiante.utils.AdminEstudiante;
+import static mx.yasekicode.gestorestudiante.utils.AdminEstudiante.*;
 import java.util.Scanner;
+
+//import static mx.yasekicode.gestorestudiante.utils.AdminEstudiante.mostrarEstudiantes;
 
 public class Main {
 
@@ -21,7 +24,12 @@ public class Main {
             System.out.println("================================");
             System.out.print("Selecciona una opción: ");
 
-            //int numSelect=entrada.nextInt();
+            while (!entrada.hasNextInt()) {
+                System.out.println("¡ERROR! INGRESA UN NUMERO DEL 1-6");
+                entrada.next();
+                System.out.print("Selecciona una opción: ");
+            }
+
             numSelect = entrada.nextInt();
 
             switch (numSelect) {
@@ -30,19 +38,21 @@ public class Main {
                     break;
 
                 case 2:
-                    System.out.println("Lista de estudiantes: ");
+                    System.out.println("\n--- LISTADO DE ESTUDIANTES ---");
+                    System.out.printf(mostrarEstudiantes());
                     break;
 
                 case 3:
-                    System.out.println("Buscar estudiante por nombre: ");
+
                     break;
 
                 case 4:
-                    System.out.println("Calcular la media de todas las notas: ");
+                    System.out.println("\n--- NOTA MEDIA GENERAL ---");
+
                     break;
 
                 case 5:
-                    System.out.println("Estudiante con la mejor calificación: ");
+
                     break;
 
                 case 6:
@@ -53,21 +63,23 @@ public class Main {
                     System.out.println("Elección del menú invalida");
                     break;
             }
+
         } while (numSelect != 6);
         entrada.close();
     }
 
+// Añadir estudiante 3er commit
     private static void addEstudiante(Scanner entrada) {
         System.out.println("\n--- AÑADIR NUEVO ESTUDIANTE ---");
         entrada.nextLine();
 
-        Estudiante nuevoEstudiante = new Estudiante(); //OBJETO ESTUDIANTE VACIO!!
+        Estudiante nuevoEstudiante = new Estudiante(); //Se crea la instancia de la clase!
         boolean datosValidos = true;
 
         System.out.println("Nombre: ");
         String nombre = entrada.nextLine();
         if (!nuevoEstudiante.setNombre(nombre)){
-            System.out.println("❌ Error: Nombre no válido");
+            System.out.println("Error: Nombre no valido");
             datosValidos = false;
         }
 
@@ -75,11 +87,11 @@ public class Main {
         if (entrada.hasNextInt()) {
             int edad = entrada.nextInt();
             if (!nuevoEstudiante.setEdad(edad)) {
-                System.out.println("❌ Error: Edad debe ser entre 5 y 80");
+                System.out.println("Error: Edad debe ser entre 5 y 80");
                 datosValidos = false;
             }
         } else {
-            System.out.println("❌ Error: La edad debe ser un número");
+            System.out.println("Error: La edad debe ser un numero");
             entrada.next();
             datosValidos = false;
         }
@@ -88,35 +100,35 @@ public class Main {
         if (entrada.hasNextDouble()) {
             double notaMedia = entrada.nextDouble();
             if (!nuevoEstudiante.setNotaMedia(notaMedia)) {
-                System.out.println("❌ Error: Nota debe ser entre 0 y 10");
+                System.out.println("Error: Nota debe ser entre 0 y 10");
                 datosValidos = false;
             }
         } else {
-                System.out.println("❌ Error: La nota debe ser un número");
+                System.out.println("Error: La nota debe ser un numero");
                 entrada.next();
                 datosValidos = false;
         }
 
         entrada.nextLine();
         System.out.println("¿Esta matriculado? (true/false): ");
-        boolean matricula = entrada.nextBoolean();
-        nuevoEstudiante.setMatricula(matricula);
+
+        if (entrada.hasNextBoolean()) {
+            boolean matricula = entrada.nextBoolean();
+            nuevoEstudiante.setMatricula(matricula);
+        } else {
+            String entradaMal = entrada.next();
+            System.out.println("Error: escribir  'true' o 'false'");
+            datosValidos = false;
+        }
 
         //llamar clase AdminEstudiante para añadir
         if (datosValidos) {
             AdminEstudiante.agregarEstudiante(nuevoEstudiante);
             System.out.println("¡Estudiante añadido exitosamente!");
         } else {
-            System.out.println("❌ No se pudo agregar el estudiante - Verifica los datos");
+            System.out.println("Estudiante NO AGREGADO - Verifica los datos");
         }
 
-//tessssst
-//boolean seAgrego = AdminEstudiante.agregarEstudiante(nombre, edad, notaMedia, matricula);
-// if (seAgrego) {
-//    System.out.println("¡Estudiante añadido exitosamente!");
-// } else {
-   // System.out.println("❌ No se pudo agregar el estudiante - Verifica los datos");
-// }
-// return true;
     }
+
 }

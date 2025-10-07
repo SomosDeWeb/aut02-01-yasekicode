@@ -14,23 +14,12 @@ public class Estudiante {
         this.edad = 0;
         this.notaMedia = 0.0;
         this.matricula = false;
-
-//testeando funcionamiento
-//this.nombre = nombre;
-//this.edad = edad;
-//this.notaMedia = notaMedia;
-//this.matricula = matricula;
-//setNombre(nombre);
-//setEdad(edad);
-//setNotaMedia(notaMedia);
-//setMatricula(matricula);
     }
 
     //metodos de acceso GETTERS Y SETTERS
     //Nombre del alumno
-    public String getNombre() { //obteniendo variable privada a public
-        return nombre;
-    }
+    public String getNombre() {return this.nombre;}
+
     public boolean setNombre(String nombre) {
         if (nombre != null && !nombre.trim().isEmpty()) {
             this.nombre = nombre;
